@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        display: flex;
+        gap: 30px;
+        background-color: lightgray;
+        width: 400px;
+        height: 300px;
+        margin: auto;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 30px;
+      }
+      .left {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .card {
+        background-color: aqua;
+        border-radius: 10px;
+        padding-left: 10px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section class="left">
+        
+        <h2>Update Variables</h2>
+
+        <label for="inputName">Name (String) :</label>
+        <input type="text" id="inputName" value="Alex Walker" />
+
+        <label for="inputAge">Age (Number)</label>
+        <input type="number" id="inputAge" value="28" />
+
+        <label for="vipInput">VIP Status (Boolean)</label>
+        <input type="checkbox" id="vipInput" checked />
+
+        <label for="colorInput">Card Color :</label>
+        <input type="color" id="colorInput" value="#f4f4f4" />
+      </section>
+
+      <section class="right">
+        <h2>Live DOM Output</h2>
+
+        <div class="card" id="idCard">
+          <div><span class="badge" id="vipBadge">VIP MEMBER</span></div>
+
+          <div>
+            <p id="cardName">Alex Walker</p>
+            <p>Age : <span id="cardAge">28</span></p>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </body>
+</html>

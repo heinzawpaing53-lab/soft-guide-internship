@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #eef2f7;
+        font-family: Inter, system-ui, sans-serif;
+        color: #111827;
+      }
+
+      header {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 36px 20px 0;
+      }
+
+      h1 {
+        font-size: 2.25rem;
+        letter-spacing: -0.03em;
+      }
+
+      p {
+        margin: 12px 0 0;
+        color: #475569;
+        line-height: 1.75;
+      }
+
+      nav {
+        background-color: #0f172a;
+        border-radius: 18px;
+        padding: 18px 28px;
+        margin: 28px 0 24px;
+        box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
+      }
+
+      ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 1.5rem;
+      }
+
+      .right {
+        background-color: #e2e8f0;
+        border-radius: 24px;
+      }
+
+      nav .right {
+        margin-left: auto;
+        display: flex;
+        gap: 1.2rem;
+        background-color: transparent;
+      }
+
+      li {
+        margin: 0;
+      }
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+
+      .feature {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        margin: 0 auto 10px;
+        max-width: 1200px;
+        padding: 0 10px;
+      }
+
+      .feature1,
+      .feature2,
+      .feature3 {
+        flex: 1;
+        min-height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        background-color: #dbeafe;
+        color: #0f172a;
+        font-weight: 600;
+        box-shadow: 0 22px 50px rgba(15, 23, 42, 0.08);
+      }
+
+      main {
+        display: flex;
+        gap: 28px;
+        max-width: 1200px;
+        margin: 0 auto 40px;
+        padding: 0 20px 40px;
+      }
+
+      .left {
+        background-color: white;
+        border-radius: 24px;
+        padding: 32px 30px;
+        width: 560px;
+        box-shadow: 0 26px 60px rgba(15, 23, 42, 0.08);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .left h2 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+      }
+
+      label {
+        display: block;
+        margin-top: 18px;
+        margin-bottom: 8px;
+        color: #475569;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      select {
+        width: 100%;
+        border: 1px solid #cbd5e1;
+        border-radius: 14px;
+        padding: 12px 14px;
+        background-color: #f8fafc;
+        color: #0f172a;
+        font-size: 0.96rem;
+      }
+
+      section.right {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 360px;
+        padding: 24px;
+      }
+
+      .name {
+        background-color: #2563eb;
+        border-radius: 22px;
+        padding: 36px 34px;
+        color: white;
+        width: 100%;
+        max-width: 420px;
+        box-shadow: 0 28px 64px rgba(37, 99, 235, 0.18);
+      }
+
+      .name h2 {
+        margin: 0 0 10px;
+        font-size: 1.6rem;
+      }
+
+      .name p {
+        margin: 0;
+        line-height: 1.75;
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 1rem;
+      }
+
+      button {
+        border: none;
+        border-radius: 14px;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      button[type="submit"] {
+        background-color: #2563eb;
+        color: white;
+      }
+
+      footer button:not([type="submit"]) {
+        background-color: #1d4ed8;
+        color: white;
+      }
+
+      button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 16px 32px rgba(37, 99, 235, 0.24);
+      }
+
+      footer {
+        display: flex;
+        gap: 16px;
+        max-width: 1200px;
+        margin: 0 auto 40px;
+        padding: 0 20px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>CSS Utility Simulator</h1>
+      <p>
+        Change the inputs below to see how atomic classes combine to build UIs.
+      </p>
+
+      <nav>
+        <ul>
+          <li><a href="#">My Logo</a></li>
+
+          <div class="right">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </div>
+        </ul>
+      </nav>
+      <div class="feature">
+        <div class="feature1">Feature1</div>
+        <div class="feature2">Feature2</div>
+        <div class="feature3">Feature3</div>
+      </div>
+    </header>
+    <main>
+      <section class="left">
+        <h2>Utility Controls</h2>
+
+        <label for="padding">Padding Spacing</label>
+        <select id="padding">
+          <option>Medium (p-8)</option>
+        </select>
+
+        <label for="theme">Background Theme (Colors)</label>
+        <select id="theme">
+          <option>Primary Blue</option>
+        </select>
+
+        <label for="size">Text Size (Typograph)</label>
+        <select id="size">
+          <option>Large (text-xl)</option>
+        </select>
+
+        <label for="coner">Coner Radius (Boders)</label>
+        <select id="coner">
+          <option>Square (rounded-none)</option>
+        </select>
+
+        <label for="shadow">Shawdow (Depth)</label>
+        <select id="shadow">
+          <option>Medium (shadow-md)</option>
+        </select>
+      </section>
+
+      <section class="right">
+        <div class="name">
+          <h2>Alex Walker</h2>
+          <p>
+            Full-Stack Web Developer Building awesome things with Tailwind CSS
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <button type="submit">Submit</button>
+      <button>Hover Me Slowly!</button>
+    </footer>
+  </body>
+</html>

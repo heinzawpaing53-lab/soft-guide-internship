@@ -120,43 +120,72 @@
     <script>
       const display = document.getElementById("display");
 
-      function appendToDisplay(input) {
-        if (display.value === "0") {
-          display.value = "";
-        }
+function appendToDisplay(input) {
+  if (display.value === "0") {
+    display.value = "";
+  }
 
-        // () button
-        if (input === "()") {
-          let open = (display.value.match(/\(/g) || []).length;
+  let lastChar =
+    display.value[display.value.length - 1];
 
-          let close = (display.value.match(/\)/g) || []).length;
+  let operators = ["+", "-", "*", "/"];
 
-          if (open > close) {
-            display.value += ")";
-          } else {
-            display.value += "(";
-          }
+  // Prevent operator at beginning
+  if (
+    display.value === "" &&
+    operators.includes(input)
+  ) {
+    return;
+  }
 
-          display.scrollLeft = display.scrollWidth;
-          return;
-        }
+  // Replace old operator with new operator
+  if (
+    operators.includes(lastChar) &&
+    operators.includes(input)
+  ) {
+    display.value =
+      display.value.slice(0, -1) + input;
 
-        // Prevent multiple decimals
-        if (input === ".") {
-          let parts = display.value.split(/[\+\-\*\/\(\)]/);
+    return;
+  }
 
-          let currentNumber = parts[parts.length - 1];
+  // () button
+  if (input === "()") {
+    let open =
+      (display.value.match(/\(/g) || []).length;
 
-          if (currentNumber.includes(".")) {
-            return;
-          }
-        }
+    let close =
+      (display.value.match(/\)/g) || []).length;
 
-        display.value += input;
+    if (open > close) {
+      display.value += ")";
+    } else {
+      display.value += "(";
+    }
 
-        // Auto scroll
-        display.scrollLeft = display.scrollWidth;
-      }
+    display.scrollLeft = display.scrollWidth;
+    return;
+  }
+
+  // Prevent multiple decimals
+  if (input === ".") {
+    let parts = display.value.split(
+      /[\+\-\*\/\(\)]/
+    );
+
+    let currentNumber =
+      parts[parts.length - 1];
+
+    if (currentNumber.includes(".")) {
+      return;
+    }
+  }
+
+  display.value += input;
+
+  // Auto scroll
+  display.scrollLeft = display.scrollWidth;
+}
 
       function deleteData() {
         display.value = display.value.slice(0, -1);
@@ -170,30 +199,37 @@
         display.value = "0";
       }
 
-      function calculate() {
-        try {
-          // Fix hidden multiplication
-          let expression = display.value
-            .replace(/(\d)\(/g, "$1*(")
-            .replace(/\)(\d)/g, ")*$1")
-            .replace(/\)\(/g, ")*(");
+     function calculate() {
+  try {
+    let expression = display.value;
 
-          let result = eval(expression);
+    // Fix hidden multiplication
+    expression = expression
+      .replace(/(\d)\(/g, "$1*(")
+      .replace(/\)(\d)/g, ")*$1")
+      .replace(/\)\(/g, ")*(");
 
-          if (result === Infinity || result === -Infinity) {
-            display.style.fontSize = "3rem";
-            display.value = "Can't divide by 0";
-          } else {
-            display.value = result;
-          }
-        } catch (error) {
-          display.value = "Error";
-        }
-      }
+    // REMOVE trailing operators (+ - * /)
+    expression = expression.replace(/[\+\-\*\/]+$/, "");
 
-      function calculatePercentage() {
-        display.value = display.value / 100;
-      }
+    // If empty after cleanup
+    if (expression === "") {
+      display.value = "0";
+      return;
+    }
+
+    let result = eval(expression);
+
+    if (result === Infinity || result === -Infinity) {
+      display.style.fontSize = "3rem";
+      display.value = "Can't divide by 0";
+    } else {
+      display.value = result;
+    }
+  } catch (error) {
+    display.value = "Error";
+  }
+}
     </script>
   </body>
 </html>
